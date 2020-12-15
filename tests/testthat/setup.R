@@ -1,9 +1,9 @@
 lib_path_restore <- .libPaths()
 local_lib <- tempdir()
 message("Loading testutils.rtestlib")
-remotes::install_local("testutils.rtestlib", type = "source", quiet = TRUE,
-                       lib = local_lib)
 .libPaths(c(local_lib, .libPaths()))
+remotes::install_local("testutils.rtestlib", type = "source", quiet = TRUE)
+
 
 withr::defer({
   .libPaths(lib_path_restore)
