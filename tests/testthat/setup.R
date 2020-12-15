@@ -1,5 +1,6 @@
 lib_path_restore <- .libPaths()
-local_lib <- tempdir()
+local_lib <- tempfile()
+dir.create(local_lib)
 message("Loading testutils.rtestlib")
 remotes::install_local("testutils.rtestlib", type = "source", quiet = TRUE,
                        lib = local_lib)
