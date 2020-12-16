@@ -6,6 +6,15 @@ message("Loading testutils.rtestlib")
 remotes::install_local("testutils.rtestlib", type = "source", repos = NULL,
                        quiet = TRUE, dependencies = FALSE, build = FALSE,
                        upgrade = FALSE)
+if (!"testutils.rtestlib" %in% installed.packages()[, "Package"]) {
+  message(sprintf(
+    "`testutils.rtestlib` installation failed on %s; retry with `upgrade=TRUE`",
+    .Platform$OS.type
+  ))
+  remotes::install_local("testutils.rtestlib", type = "source", repos = NULL,
+                         quiet = TRUE, dependencies = TRUE, build = FALSE,
+                         upgrade = TRUE)
+}
 
 withr::defer({
   .libPaths(lib_path_restore)
