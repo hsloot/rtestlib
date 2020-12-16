@@ -3,7 +3,8 @@ local_lib <- tempfile()
 dir.create(local_lib)
 message("Loading testutils.rtestlib")
 .libPaths(c(local_lib, .libPaths()))
-remotes::install_local("testutils.rtestlib", type = "source", quiet = TRUE)
+remotes::install_local("testutils.rtestlib", type = "source", quiet = TRUE,
+  dependencies = FALSE, build = FALSE, upgrade = FALSE)
 
 
 withr::defer({
